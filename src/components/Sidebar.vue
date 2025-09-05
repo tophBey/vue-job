@@ -1,5 +1,6 @@
 <script setup>
-import logo from '../asset/logo.png'
+import logo from '../asset/logo.png';
+import {RouterLink} from 'vue-router';
 
 </script>
 
@@ -20,21 +21,19 @@ import logo from '../asset/logo.png'
             </a>
             <div class="md:ml-auto">
               <div class="flex space-x-2">
-                <a
-                  href="index.html"
+                <RouterLink
+                  to="/"
                   class="text-white bg-green-900 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  >Home</a
-                >
-                <a
-                  href="jobs.html"
+                  >Home</RouterLink>
+                <RouterLink
+                  to="/jobs"
                   class="text-white hover:bg-green-900 hover:text-white rounded-md px-3 py-2"
-                  >Jobs</a
+                  >Jobs</RouterLink
                 >
-                <a
-                  href="add-job.html"
+                <RouterLink
+                  to="/jobs/addjob"
                   class="text-white hover:bg-green-900 hover:text-white rounded-md px-3 py-2"
-                  >Add Job</a
-                >
+                  >Add Job</RouterLink>
               </div>
             </div>
           </div>

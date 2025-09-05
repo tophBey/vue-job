@@ -1,13 +1,32 @@
 
 <script setup>
 
-import {defineProps} from 'vue';
+import {defineProps, ref, computed} from 'vue';
 
-defineProps({
-    job : {
-        type : Object
+
+const isShowFullDescription = ref(false);
+
+
+let state =  defineProps({
+  job : {
+    type : Object
     }
 })
+let fullDescription = computed(() => {
+      let description = state.job.description;
+      console.log(description);
+      
+      if(!isShowFullDescription.value){
+        description = state.job.description.substring(0, 100) + '...';
+      }
+      return description;
+})
+
+
+
+const toggleDescription = () => {
+  isShowFullDescription.value = !isShowFullDescription.value;
+}
 </script>
 
 
@@ -21,7 +40,10 @@ defineProps({
       </div>
 
       <div class="mb-5">
-        {{ job.description }}
+        <div>
+        {{ fullDescription }} 
+        <button @click="toggleDescription" class="font-medium text-md text-green-400">{{ isShowFullDescription ? 'less' : 'more' }}</button>
+        </div>
       </div>
 
       <h3 class="text-green-500 mb-2">{{ job.salary }} / Year</h3>
